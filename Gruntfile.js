@@ -192,6 +192,24 @@ module.exports = function(grunt) {
             }
         },
 
+        svgmin: {
+            options: {
+                plugins: [{
+                    removeViewBox: false
+                }, {
+                    removeUselessStrokeAndFill: false
+                }, {
+                    removeEmptyAttrs: false
+                }]
+            },
+            dist: {
+                expand: true,
+                cwd: "<%= dirs.dest %>",
+                dest: "<%= dirs.dest %>",
+                src: "assets/img/**/*.svg"
+            }
+        },
+
         connect: {
             options: {
                 base: "<%= dirs.dest %>/",
@@ -336,6 +354,7 @@ module.exports = function(grunt) {
         "uglify",
         "filerev",
         "usemin",
+        "svgmin",
         "htmlmin"
     ]);
 
